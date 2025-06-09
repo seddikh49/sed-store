@@ -162,7 +162,7 @@ const Orders = () => {
                   <tr key={index} className="border border-gray-300">
 
                     <td className='py-2  flex border-gray-200 gap-3 justify-center'>
-                      <button onClick={() => handleDelete(order._id)} className='cursor-pointer hover:bg-red-800 bg-red-500 text-white xl:py-3  xm:py-[5px] xm:px-2  xl:px-3 font-bold rounded-md'>
+                      <button onClick={() => handleDelete(order.id)} className='cursor-pointer hover:bg-red-800 bg-red-500 text-white xl:py-3  xm:py-[5px] xm:px-2  xl:px-3 font-bold rounded-md'>
                         <MdDelete />
                       </button>
 

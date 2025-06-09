@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Orderdetail from './pages/Orderdetail'
 import axios from 'axios'
 import { OrderContext } from './context/orderContext'
+import Home from './pages/Home'
 
 
 
@@ -54,7 +55,7 @@ const App = () => {
   }, [token]);
 
   return (
-    <div className='bg-gray-50 min-h-screen w-full relative '>
+    <div className='bg-gray-50  w-full relative '>
       <ToastContainer />
       {isAdmin  ?
            <>
@@ -64,6 +65,7 @@ const App = () => {
            <div className='flex w-full justify-end relative '>
              <div className='xl:w-[85%] lg:w-[85%] md:w-[85%] xm:w-full sm:w-full'>
                <Routes>
+                 <Route path='/' element={<Home />} />
                  <Route path='/add' element={<Add token={token} />} />
                  <Route path='/orders' element={<Orders />} />
                  <Route path='/list' element={<List token={token} />} />

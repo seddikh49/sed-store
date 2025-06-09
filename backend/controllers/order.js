@@ -36,8 +36,14 @@ const addOrder = async (req, res) => {
 const deleteOrder = async (req, res) => {
     try {
         const { id } = req.params
-        const deletedOrder = await orderModel.findByIdAndDelete(id)
-        if (deleteOrder) {
+        console.log(id)
+        const deletedOrder = await Order.destroy({
+            where:{
+                id : id
+            }
+        })
+
+        if (deletedOrder) {
             return res.json({ success: true, msg: 'لقد تم حذف الطلب' })
         } else {
             res.json({ success: false, msg: "لا يمكنك هذا هذا الطلب" })
@@ -47,6 +53,9 @@ const deleteOrder = async (req, res) => {
         console.log(error)
     }
 }
+
+
+
 const getAllOrders = async (req, res) => {
     try {
         const orders = await Order.findAll(); // Sequelize
@@ -95,21 +104,22 @@ const updateOrder = async (req, res) => {
 
 
 const updateAllNotifications = async (req, res) => {
-    try {
-        // تحديث جميع الطلبات وجعل notification 0
-        const result = await orderModel.updateMany({}, // بدون فلتر، يعني سيتم تحديث جميع الطلبات
-            { $set: { notification: 0 } } // تعيين notification إلى 0 لجميع الطلبات
-        );
+  try {
+    // تحديث كل السجلات وجعل notification = 0
+    const [affectedRows] = await Order.update(
+      { notification: 0 },     // القيم الجديدة
+      { where: {} }            // بدون شروط = كل السجلات
+    );
 
-        if (result.modifiedCount > 0) {
-            res.json({ success: true, msg: "تم تحديث جميع الإشعارات بنجاح" });
-        } else {
-            res.json({ success: false, msg: "لا توجد طلبات لتحديثها" });
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, msg: "حدث خطأ أثناء التحديث" });
+    if (affectedRows > 0) {
+      res.json({ success: true, msg: "تم تحديث جميع الإشعارات بنجاح" });
+    } else {
+      res.json({ success: false, msg: "لا توجد طلبات لتحديثها" });
     }
-}
 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, msg: "حدث خطأ أثناء التحديث" });
+  }
+};
 export { addOrder, getAllOrders, deleteOrder, updateOrder, updateAllNotifications };
