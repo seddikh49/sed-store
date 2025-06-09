@@ -2,8 +2,8 @@
 import Order from "../models/orders.js";
 
 const addOrder = async (req, res) => {
-    console.log(req.body)
-    console.log("z")
+ 
+
     try {
         const { fullName, phone, wilaya, commune, productName, quantity, status, notification } = req.body;
         const orderData = await Order.findOne({

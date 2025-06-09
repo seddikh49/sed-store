@@ -66,31 +66,26 @@ const ProductDetails = ({ product }) => {
                 notification,
                 date: new Date()
             });
-            // console.log(response.data.msg.message)
+
 
             if (response.data.success) {
-                
                 toast.success('تم طلب المنتج')
                 setLoading(false)
                 router.push('/confirm   ')
             }
             if (!response.data.success) {
-                toast.error(response.data.msg.errors[0].message)
-                setLoading(false)
+                if(response.data.msg.message){
+                    return toast.error(response.data.msg.message)
+                }else{
+                    return toast.error(response.data.msg.errors[0].message)
+                }
+                
             }
 
 
-        } catch (error) {
+        } catch (error) { 
             console.log(error)
-            setLoading(false)
-            if (error.response.data.details.length > 1) {
-                return toast.error('يرجى ملئ جميع الحقول')
-            }
-            toast.error(error.response.data.details[0].message)
-
-
         }
-
     }
 
 
@@ -213,7 +208,7 @@ const ProductDetails = ({ product }) => {
 
                         {/* كمية المنتج */}
                         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        
+
                             <div className="flex items-center overflow-hidden border border-gray-300 rounded-xl">
                                 <button type="button" onClick={incrementQuantity} className="w-10 h-10 bg-blue-600 text-white font-bold text-xl hover:bg-blue-700 transition">
                                     +
@@ -223,7 +218,7 @@ const ProductDetails = ({ product }) => {
                                     -
                                 </button>
                             </div>
-                                <h1 className="text-lg font-bold text-gray-700 text-right">:    كمية المنتج</h1>
+                            <h1 className="text-lg font-bold text-gray-700 text-right">:    كمية المنتج</h1>
                         </div>
 
                         {/* تفاصيل الطلب */}
