@@ -47,18 +47,15 @@ const deleteOrder = async (req, res) => {
         console.log(error)
     }
 }
-
 const getAllOrders = async (req, res) => {
     try {
-        const orders = await orderModel.find({});
-        res.json({ success: true, order: orders })
-
+        const orders = await Order.findAll(); // Sequelize
+        res.json({ success: true, orders });  // جمع البيانات وإرسالها
     } catch (error) {
-        console.log(error)
+        console.error(error);
+        res.status(500).json({ success: false, message: 'فشل في جلب الطلبات' });
     }
-}
-
-
+};
 
 
 

@@ -23,8 +23,11 @@ const Login = ({ setToken }) => {
         email,
         password
       });
+      console.log(response)
 
       if (response.data.success) {
+        console.log("success")
+        console.log(response.data)
         setToken(response.data.token)
         toast.success('successfully')
         setIsAdmin(true)

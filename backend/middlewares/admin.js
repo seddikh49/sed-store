@@ -2,10 +2,9 @@ import jwt from 'jsonwebtoken'
 
 const authAdmin = async(req, res, next) => {
     try {
-
-        console.log(req.headers.token.split(' ')[1])
-    
-        const token = req.headers.token.split(' ')[1]
+        const {token} = req.headers
+        
+        console.log("this is token "+ token)
         if (!token) {
             return res.json({ msg: "you don't have authorization to access this api" })
         }
