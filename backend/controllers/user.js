@@ -9,7 +9,7 @@ const admin = (req, res) => {
         )
         res.json({ token: token })
     } else {
-        res.json({ msg: 'sorry ,access denied' })
+        res.json({ msg: 'sorry ,access denied ' })
     }
 }
 
