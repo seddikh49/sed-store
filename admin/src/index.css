@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@theme {
+    --breakpoint-xm: 300px;
+    --breakpoint-sm: 500px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 976px;
+    --breakpoint-xl: 1200px;
+    --font-poppins: "Poppins", "serif";
+    /* --font-display: "Satoshi", "sans-serif"; */
+    --breakpoint-3xl: 1920px;
+    --font-display: "Oswald", "sans-serif";
+}
+
+select,
+input,
+textarea {
+    outline-color: rgb(236, 195, 207);
+    border: 1px solid gainsboro;
+    border-radius: 4px;
+}
+
+.active {
+    border: solid 2px rgba(0, 0, 0, 0.411);
+    background-color: rgb(255, 236, 249);
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+}
