@@ -17,9 +17,12 @@ const OrderContextProvider = ({ children }) => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(`${backEndUrl}/api/order/list`)
-      if (response) {
-        setorders(response.data.order)
-        setCopiedOrders(response.data.order)
+ 
+      if (response.data.success) {
+        setorders(response.data.orders)
+        setCopiedOrders(response.data.orders)
+        console.log(orders)
+
       }
 
     } catch (error) {

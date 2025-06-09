@@ -33,7 +33,6 @@ const App = () => {
         const response = await axios.post(`${backEndUrl}/api/user/verify-token`, {}, {
           headers: { token: token }
         })
-        console.log(response)
         if (response.data.role === "admin") {
           setIsAdmin(true)
         } else {
@@ -71,9 +70,9 @@ const App = () => {
                  <Route path='/orderdetail/:name' element={<Orderdetail token={token} />} />
                </Routes>
              </div>
-             {/* <div className='xl:w-56  lg:block lg:w-52 md:w-44 sm:w-20 xm:w-12  '>
+             <div className='xl:w-56  lg:block lg:w-52 md:w-44 sm:w-20 xm:w-12  '>
                <SideBar />
-             </div> */}
+             </div>
            </div>
            <div>
              <h1>

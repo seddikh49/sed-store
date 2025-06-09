@@ -24,10 +24,12 @@ const SideBar = () => {
   const [notifications, setNotifications] = useState(0);
 
   const reduceNotifications = () => {
-    const addition = orders.reduce((accumulator, currentValue) => {
+    if(orders){
+      const addition = orders.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.notification
     }, 0)
     setNotifications(addition);
+    }
   }
   
   useEffect(() => {

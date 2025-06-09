@@ -32,7 +32,6 @@ const Orders = () => {
  
 
 
-
   const handleDelete = (id) => {
 
     Swal.fire({
@@ -83,7 +82,7 @@ const Orders = () => {
       return setorders(copiedOrders)
     }
 
-    const filter = copiedOrders.filter((st) => {
+    const filter = copiedOrders?.filter((st) => {
       return st.status === changeState
     })
     setorders(filter)
@@ -142,7 +141,7 @@ const Orders = () => {
               </select>
             </div>
           </div>
-
+       
         </div>
         <h1 dir='rtl' className='xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl xm:text-xl  font-cairo py-5'>الطلبات</h1>
         <div className='flex gap-4 bg-amber-50  justify-center items-center  w-full overflow-hidden rounded-xl border border-gray-300  '>
@@ -158,7 +157,7 @@ const Orders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order, index) => {
+              {orders?.map((order, index) => {
                 return (
                   <tr key={index} className="border border-gray-300">
 
